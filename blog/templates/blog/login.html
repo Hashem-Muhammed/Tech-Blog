@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block cssfile%}
+<link rel="stylesheet" href = "{%static "blog/index.css"%}">
+{%endblock%}
+{%block content%}
+
+
+{% load crispy_forms_tags %}  
+<form method='POST'>
+    {% csrf_token %}
+    <div class ="center">
+    <div class="form-group col-xs-3">
+        <p></p><p></p>
+        {{form.email|as_crispy_field}}<p></p>
+        {{form.password|as_crispy_field}}<p></p>
+      </div>
+    
+    <p></p><p></p><p></p><p></p>
+    <input type="submit" value="Submit">
+
+        <p></p>
+      <p>{{message}}</p>
+
+      <p> Don't have an account?  <a href="{% url "register"  %}" >Sign Up</a>
+      </p>
+</div>
+
+</form>
+
+{%endblock%}

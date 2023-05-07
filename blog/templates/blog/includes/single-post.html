@@ -1,0 +1,40 @@
+
+    {%block content%}
+
+    <section class="container">
+        <div class="page-container">
+            <div class="page-content">
+                <div class="card">
+                    <div class="card-header pt-0">
+                        <h3 class="card-title mb-4">{{post.title}}</h3>
+                        <div class="blog-media mb-4">
+                            {%if post.postImage.url is not None%}
+                            <img src="{{post.postImage.url}}"  class="w-100">
+                            {%endif%}
+                            <a href="#" class="badge badge-primary">#Salupt</a> 
+                        </div>  
+                        <small class="small text-muted">
+                            <a href="#" class="text-muted">{{post.author}}</a>
+                            <span class="px-2">·</span>
+                            <span>{{post.date}}</span>
+                            <span class="px-2">·</span>
+                        </small>
+                    </div>
+                    <div class="card-body border-top">
+                        <p class="my-3">
+                            {{post.content}}</p> 
+                        
+                    </div>
+                    
+                    
+                    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+                    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+                
+                    <!-- JoeBLog js -->
+                    <script src="assets/js/joeblog.js"></script>
+                </section>          
+
+
+</body>
+</html>
+{%endblock%}

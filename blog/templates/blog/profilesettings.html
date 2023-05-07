@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block cssfile%}
+<link rel="stylesheet" href = "{%static "blog/index.css"%}">
+{%endblock%}
+{%block content%}
+
+{% include "blog/includes/header.html" %}
+{% load crispy_forms_tags %}  
+
+<form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class ="center">
+    <div class="form-group col-xs-3">
+        <p></p><p></p>
+        {%for field in form%}
+        {{field|as_crispy_field}}<p></p>
+        {%endfor%}
+      </div>
+    <img src="{{request.user.profileImage.url}}"
+
+    <p></p><p></p><p></p><p></p>
+    <input type="submit" value="Submit">
+</div>
+
+</form>
+
+
+{%endblock%}

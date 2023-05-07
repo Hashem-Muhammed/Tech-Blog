@@ -1,0 +1,44 @@
+{% extends "base.html"%}
+
+
+{%block content%}
+{% include "blog/includes/header.html" %}
+
+<section id="summary">
+  <img src="..." class="card-img-top" alt="...">
+      <h2>{{ post.title }}</h2>
+      <p >{{post.content}}</p>
+      <p class="card-text">Tags :
+        <div>
+          {% for tag in tags %}
+            <span class="tag">{{ tag.content }}</span>
+          {% endfor %}
+        </div>
+   
+        <article>
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" />
+         
+          <div>Last updated on <time>{{ post.date|date:"d M Y" }}</time></div>
+        </article>
+      </section>
+  {% load crispy_forms_tags %}  
+<div class="comments">
+  {%for comment in comments%}
+  <p>{{comment.author}} : {{comment}} </p><br>
+  {%endfor%}
+</div>
+  <form method='POST'>
+    {% csrf_token %}
+    <div class ="center">
+    <div class="form-group col-xs-3">
+        <p></p><p></p>
+        {%for field in form%}
+        {{field|as_crispy_field}}<p></p>
+        {%endfor%}
+      </div>
+    
+    <p></p><p></p><p></p><p></p>
+    <input type="submit" value="Submit">
+</div>
+
+{%endblock%}
